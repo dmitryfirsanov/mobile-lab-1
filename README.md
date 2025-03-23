@@ -14,7 +14,7 @@ https://github.com/user-attachments/assets/f1438cc8-8345-4788-9338-47e8aa1e77dd
 
 Проект был создано с помощью [Expo](https://expo.dev) [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Инстракция по настройке
+## Инструкция по настройке
 
 1. Установка зависимостей
 
