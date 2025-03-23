@@ -1,39 +1,53 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { AntDesign } from '@expo/vector-icons';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
+export default function AppLayout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <Stack
+      initialRouteName="index"
+      screenOptions={() => ({
+        headerStyle: {
+          backgroundColor: '#121212',
+          elevation: 0,
+          shadowOpacity: 0,
+          borderBottomWidth: 1,
+          borderBottomColor: '#333',
+        },
+        headerTitleStyle: {
+          color: '#FFFFFF',
+          fontSize: 18,
+          fontWeight: 'bold',
+        },
+        headerTintColor: '#1E90FF',
+        cardStyle: { backgroundColor: '#121212' }
+      })}
+    >
+      <Stack.Screen 
+        name="index" 
+        options={{
+          title: 'Главная',
+        }}
+      />
+      <Stack.Screen 
+        name="quiz"
+        options={{
+          title: '❓ Квиз'
+        }}
+      />
+      <Stack.Screen 
+        name="calculator"
+        options={{
+          title: '🧮 Калькулятор'
+        }}
+      />
+      <Stack.Screen 
+        name="game" 
+        options={{
+          title: '🎮 Угадай число'
+        }}
+      />
+    </Stack>
   );
 }
