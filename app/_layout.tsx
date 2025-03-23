@@ -1,7 +1,5 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import { Stack } from 'expo-router';
-import { AntDesign } from '@expo/vector-icons';
 
 export default function AppLayout() {
   return (
